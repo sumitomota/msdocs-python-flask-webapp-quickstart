@@ -10,11 +10,10 @@
         <div class="px-4 py-3 my-2 text-center">
             <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/azure-icon.svg') }}" alt="Azure Logo" width="192" height="192"/>
             <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-            <h1 class="display-6 fw-bold">キット発送形態 {{sendForm}}</h1>
-            <h1 class="display-6 fw-bold">キット言語の選択 {{language}}</h1>
-            <p class="fs-5">
-                It is nice to meet you!
-            </p>
+            <ul>
+                <li>キット発送形態 {{sendForm}}</li>
+                <li>キット言語の選択 {{language}}</li>
+            </ul>
 
           <form method="post" action="{{url_for('upload')}}" enctype = "multipart/form-data">
             <div class="col-md-6 mx-auto text-center">
