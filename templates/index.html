@@ -15,8 +15,8 @@
         <form method="post" action="{{url_for('uploadForm')}}">
             <div class="col-md-6 mx-auto text-center">
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                <label for="name" class="form-label fw-bold fs-5">キット発送形態</label>
-                    <select name="SendForm">
+                <label for="SendForm" class="form-label fw-bold fs-5">キット発送形態</label>
+                    <select name="SendForm" id="SendForm">
                         <option value="home">自宅宛</option>
                         <option value="MFD">複合機連携</option>
                         <option value="office">事業所一括</option>
@@ -24,16 +24,16 @@
                 </div> 
 
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                <label for="name" class="form-label fw-bold fs-5">キット言語の選択（日/英）</label>
-                    <select name="Lang">
+                <label for="Lang" class="form-label fw-bold fs-5">キット言語の選択（日/英）</label>
+                    <select name="Lang" id="Lang">
                         <option value="Jp"> 日本語 </option>
                         <option value="En">英語</option>
                     </select>
                 </div> 
                 
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                    <label for="name" class="form-label fw-bold fs-5">対象者（取得番号）数</label>
-                    <input type="number" name="NoOfTarget" value="0" required>>
+                    <label for="NoOfTarget" class="form-label fw-bold fs-5">対象者（取得番号）数</label>
+                    <input type="number" name="NoOfTarget" id="NoOfTarget" value="0" required>>
                 </div> 
 
             <!-- <p class="lead mb-2">Could you please tell me your name?</p> -->
