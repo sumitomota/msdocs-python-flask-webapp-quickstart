@@ -30,6 +30,19 @@ def hello():
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
 
-
+@app.route('/uploadForm', methods=['POST'])
+def uploadForm():
+   name = request.form.get('name')
+   sendForm = request.form.get('SendForm')
+   language = request.form.get('Lang')
+   numberOfTarget = request.form.get('NoOfTarget')
+  
+   if sendForm:
+       print('Request for hello page received with sendForm=%s' % sendForm)
+       return render_template('uploadForm.html', sendForm = sendForm, language=language)
+   else:
+       print('Request for hello page received with no name or blank name -- redirecting')
+       return redirect(url_for('index'))
+     
 if __name__ == '__main__':
    app.run()
