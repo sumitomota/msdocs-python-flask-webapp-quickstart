@@ -34,7 +34,7 @@ def uploadForm():
     language = request.form.get('Lang')
     numberOfTarget = request.form.get('NoOfTarget')
     
-    if name:
+    if SendForm:
         print('Request for hello page received with name=%s' % name)
         return render_template('uploadForm.html', sendForm = sendForm, language=language)
     else:
@@ -69,7 +69,7 @@ def upload():
  #           file.filename,
  #           file,
  #       )
-        return render_template('finishRequest.html', sendForm = sendForm, language=language,filename=file.filename)
+        return render_template('finishRequest.html', filename=file.filename)
 
 if __name__ == '__main__':
    app.run()
