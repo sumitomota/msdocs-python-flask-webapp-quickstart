@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 
 from flask import (Flask, redirect, render_template, request,
@@ -34,7 +35,7 @@ def uploadForm():
     language = request.form.get('Lang')
     numberOfTarget = request.form.get('NoOfTarget')
     
-    if SendForm:
+    if sendForm:
         print('Request for hello page received with name=%s' % name)
         return render_template('uploadForm.html', sendForm = sendForm, language=language)
     else:
@@ -60,7 +61,9 @@ def upload():
         # Create the BlobServiceClient object
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
-        blob_client = blob_service_client.get_blob_client(container='container1', blob=file.filename)
+        uploadfilename = file.filename.replace('.csv', datetime.now().isoformat('_'))
+
+        blob_client = blob_service_client.get_blob_client(container='container1', blob=uploadfilename)
         blob_client.upload_blob(file, blob_type="BlockBlob")
 
 #        block_blob_service = BlockBlobService(account_name=account_name, account_key=account_key)
