@@ -9,7 +9,7 @@ app = Flask(__name__)
 account_name = 'cs1100320010dc66396'
 account_key = 'o46GVNrsMLsM/XcPN+SE2CW0wps/IUcKq6awhKJUzZ7hxFpU1scPye0hTFbuV6U+IW3mZ2EmfHSi+AStbZDNfQ=='
 container_name = 'container1'
-ALLOWED_EXTENSIONS = {'csv'}
+# ALLOWED_EXTENSIONS = {'csv'}
 
 def allowed_file(filename):
     return '.' in filename and \
