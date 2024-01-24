@@ -2,7 +2,6 @@ import os
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
-from werkzeug.utils import secure_filename
 from azure.storage.blob import ContentSettings
 
 app = Flask(__name__)
@@ -54,7 +53,6 @@ def upload():
         flash('No selected file')
         return redirect(request.url)
     if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
         block_blob_service = BlockBlobService(account_name=account_name, account_key=account_key)
         block_blob_service.create_blob_from_stream(
             container_name,
