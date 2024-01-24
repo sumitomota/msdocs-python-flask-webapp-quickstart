@@ -2,7 +2,7 @@ import os
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
-from azure.storage.blob import ContentSettings
+# from azure.storage.blob import ContentSettings
 
 app = Flask(__name__)
 
@@ -26,7 +26,7 @@ def favicon():
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/uploadForm', methods=['POST'])
-def hello():
+def uploadForm():
     name = request.form.get('name')
     sendForm = request.form.get('SendForm')
     language = request.form.get('Lang')
