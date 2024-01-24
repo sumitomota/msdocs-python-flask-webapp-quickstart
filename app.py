@@ -14,7 +14,7 @@ ALLOWED_EXTENSION = 'csv'
 
 def allowed_file(filename):
     return '.' in filename and \
-          filename.rsplit('.', 1)[1].lower() = ALLOWED_EXTENSION
+          filename.rsplit('.', 1)[1].lower() == ALLOWED_EXTENSION
   
 @app.route('/')
 def index():
