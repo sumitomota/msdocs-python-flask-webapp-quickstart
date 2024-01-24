@@ -69,7 +69,7 @@ def upload():
  #           file.filename,
  #           file,
  #       )
-        return render_template('finishRequest.html')
+        return render_template('finishRequest.html', sendForm = sendForm, language=language,filename=file.filename)
 
 if __name__ == '__main__':
    app.run()
