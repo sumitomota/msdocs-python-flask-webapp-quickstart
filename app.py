@@ -2,18 +2,18 @@ import os
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
-# from azure.storage.blob import ContentSettings
+from azure.storage.blob import BlockBlobService, PublicAccess, ContentSettings
 
 app = Flask(__name__)
 
 account_name = 'cs1100320010dc66396'
 account_key = 'o46GVNrsMLsM/XcPN+SE2CW0wps/IUcKq6awhKJUzZ7hxFpU1scPye0hTFbuV6U+IW3mZ2EmfHSi+AStbZDNfQ=='
 container_name = 'container1'
-# ALLOWED_EXTENSIONS = {'csv'}
+ALLOWED_EXTENSIONS = {'csv'}
 
-# def allowed_file(filename):
-#    return '.' in filename and \
-#           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+def allowed_file(filename):
+    return '.' in filename and \
+          filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
     
 @app.route('/')
 def index():
@@ -54,12 +54,12 @@ def upload():
         return redirect(request.url)
     # if file and allowed_file(file.filename):
     if file:
-#        block_blob_service = BlockBlobService(account_name=account_name, account_key=account_key)
-#        block_blob_service.create_blob_from_stream(
-#            container_name,
-#            file.filename,
-#            file,
-#        )
+        block_blob_service = BlockBlobService(account_name=account_name, account_key=account_key)
+        block_blob_service.create_blob_from_stream(
+            container_name,
+            file.filename,
+            file,
+        )
         return redirect(url_for('finishRequest'))
 
 if __name__ == '__main__':
