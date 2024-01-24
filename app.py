@@ -72,8 +72,9 @@ def upload():
  #       )
         return render_template('finishRequest.html', filename=file.filename)
 
-@app.route('/signinform')
+@app.route('/signinform', methods=['GET', 'POST'])
 def signinForm():
+    print('Request for login page received')
     return render_template('signin.html')
 
 if __name__ == '__main__':
