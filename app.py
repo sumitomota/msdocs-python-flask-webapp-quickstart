@@ -9,14 +9,12 @@ app = Flask(__name__)
 
 connect_str = 'DefaultEndpointsProtocol=https;AccountName=storegeaccount1;AccountKey=Zz4fWjzS3VfsGL3GwKc+3LRuPFGEYElzdfZ7npFPbEa/xGudg+p0h1O4EzsqwgPs7khO7QhSxrZ3+AStmys8ZQ==;EndpointSuffix=core.windows.net'
 
-account_name = 'cs1100320010dc66396'
-account_key = 'o46GVNrsMLsM/XcPN+SE2CW0wps/IUcKq6awhKJUzZ7hxFpU1scPye0hTFbuV6U+IW3mZ2EmfHSi+AStbZDNfQ=='
 container_name = 'container1'
-# ALLOWED_EXTENSIONS = {'csv'}
+ALLOWED_EXTENSION = 'csv'
 
-# def allowed_file(filename):
-#     return '.' in filename and \
-#           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+def allowed_file(filename):
+    return '.' in filename and \
+          filename.rsplit('.', 1)[1].lower() = ALLOWED_EXTENSION
   
 @app.route('/')
 def index():
@@ -61,7 +59,7 @@ def upload():
         # Create the BlobServiceClient object
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
-        uploadfilename = file.filename.replace('.csv', datetime.now().isoformat('_'))
+        uploadfilename = file.filename.replace('.csv', '_' + datetime.now().isoformat('_') + '.csv',)
 
         blob_client = blob_service_client.get_blob_client(container='container1', blob=uploadfilename)
         blob_client.upload_blob(file, blob_type="BlockBlob")
