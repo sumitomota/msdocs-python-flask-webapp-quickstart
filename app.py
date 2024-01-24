@@ -69,7 +69,7 @@ def upload():
  #           file.filename,
  #           file,
  #       )
-        return redirect(url_for('finishRequest'))
+        return render_template('finishRequest.html')
 
 if __name__ == '__main__':
    app.run()
