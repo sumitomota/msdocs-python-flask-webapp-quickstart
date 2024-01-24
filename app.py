@@ -6,7 +6,7 @@ from flask import (Flask, redirect, render_template, request,
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 app = Flask(__name__)
 
-connect_str = 'DefaultEndpointsProtocol=https;AccountName=storegeaccount1;AccountKey=Zz4fWjzS3VfsGL3GwKc+3LRuPFGEYElzdfZ7npFPbEa/xGudg+p0h1O4EzsqwgPs7khO7QhSxrZ3+AStmys8ZQ==;EndpointSuffix=core.windows.net
+connect_str = 'DefaultEndpointsProtocol=https;AccountName=storegeaccount1;AccountKey=Zz4fWjzS3VfsGL3GwKc+3LRuPFGEYElzdfZ7npFPbEa/xGudg+p0h1O4EzsqwgPs7khO7QhSxrZ3+AStmys8ZQ==;EndpointSuffix=core.windows.net'
 
 account_name = 'cs1100320010dc66396'
 account_key = 'o46GVNrsMLsM/XcPN+SE2CW0wps/IUcKq6awhKJUzZ7hxFpU1scPye0hTFbuV6U+IW3mZ2EmfHSi+AStbZDNfQ=='
