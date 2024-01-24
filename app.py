@@ -26,7 +26,7 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/hello', methods=['POST'])
+@app.route('/uploadForm', methods=['POST'])
 def hello():
     name = request.form.get('name')
     sendForm = request.form.get('SendForm')
@@ -35,7 +35,7 @@ def hello():
     
     if name:
         print('Request for hello page received with name=%s' % name)
-        return render_template('upload.html', sendForm = sendForm, language=language)
+        return render_template('uploadForm.html', sendForm = sendForm, language=language)
     else:
         print('Request for hello page received with no name or blank name -- redirecting')
         return redirect(url_for('index'))
