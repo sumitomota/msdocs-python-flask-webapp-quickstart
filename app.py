@@ -4,22 +4,27 @@ import os
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 # from azure.storage.blob import BlockBlobService, PublicAccess, ContentSettings
-from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+# from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 app = Flask(__name__)
 
-connect_str = 'DefaultEndpointsProtocol=https;AccountName=storegeaccount1;AccountKey=Zz4fWjzS3VfsGL3GwKc+3LRuPFGEYElzdfZ7npFPbEa/xGudg+p0h1O4EzsqwgPs7khO7QhSxrZ3+AStmys8ZQ==;EndpointSuffix=core.windows.net'
-
-container_name = 'container1'
 ALLOWED_EXTENSION = 'csv'
+
+user = 'no'
 
 def allowed_file(filename):
     return '.' in filename and \
           filename.rsplit('.', 1)[1].lower() == ALLOWED_EXTENSION
-  
+
+def loggedin():
+    return user != 'no'
+
 @app.route('/')
 def index():
-    print('Request for index page received')
-    return render_template('index.html')
+    if loggedin():
+        print('Request for index page received')
+        return render_template('index.html')
+    else:
+        return render_template('signin.html')
 
 @app.route('/favicon.ico')
 def favicon():
@@ -57,12 +62,12 @@ def upload():
     # if file and allowed_file(file.filename):
     if file:
         # Create the BlobServiceClient object
-        blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+        # blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
         uploadfilename = file.filename.replace('.csv', '_' + datetime.now().isoformat('_') + '.csv',)
 
-        blob_client = blob_service_client.get_blob_client(container='container1', blob=uploadfilename)
-        blob_client.upload_blob(file, blob_type="BlockBlob")
+        # blob_client = blob_service_client.get_blob_client(container='container1', blob=uploadfilename)
+        # blob_client.upload_blob(file, blob_type="BlockBlob")
 
 #        block_blob_service = BlockBlobService(account_name=account_name, account_key=account_key)
 #       block_blob_service.create_blob_from_stream(
@@ -73,19 +78,33 @@ def upload():
         return render_template('finishRequest.html', filename=file.filename)
 
 @app.route('/signinform', methods=['GET', 'POST'])
-def signinForm():
-    print('Request for login page received')
-    return render_template('signin.html')
+def signinform():
+    email = request.form.get('email')
+    if email:
+        global user
+        user = email
+        print('Request for login page received')
+        return render_template('index.html')
+    else:
+        return render_template('signin.html')
 
 @app.route('/request', methods=['GET'])
-def request():
+def collectrequest():
     print('Request for request page received')
     return render_template('request.html')
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
     print('Request for dashboard page received')
-    return render_template('dashboard.html')
+    return redirect(request.url)
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    global user
+    user = 'no'
+    print('Request for login page received')
+    return render_template('signin.html')
+
 
 if __name__ == '__main__':
    app.run()
