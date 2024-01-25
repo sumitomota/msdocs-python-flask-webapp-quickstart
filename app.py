@@ -77,5 +77,10 @@ def signinForm():
     print('Request for login page received')
     return render_template('signin.html')
 
+@app.route('/dashboard', methods=['GET'])
+def dashboard():
+    print('Request for dashboard page received')
+    return render_template('dashboard.html')
+
 if __name__ == '__main__':
    app.run()
