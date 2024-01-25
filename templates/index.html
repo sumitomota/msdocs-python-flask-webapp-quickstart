@@ -3,39 +3,10 @@
 <div class="px-4 py-3 my-2 text-center">
     <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/azure-icon.svg') }}" alt="Azure Logo" width="192" height="192"/>
     <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-    <h1 class="display-6 fw-bold text-primary">マイナンバー収集依頼</h1>            
+    <h1 class="display-6 fw-bold text-primary">マイナンバー収集ポータル</h1>            
   </div>
-<form method="post" action="{{url_for('uploadForm')}}">
-    <div class="col-md-6 mx-auto text-center">
-	<div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-	<label for="SendForm" class="form-label fw-bold fs-5">キット発送形態</label>
-	    <select name="SendForm" id="SendForm">
-		<option value="home">自宅宛</option>
-		<option value="MFD">複合機連携</option>
-		<option value="office">事業所一括</option>
-	    </select>
-	</div> 
-
-	<div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-	<label for="Lang" class="form-label fw-bold fs-5">キット言語の選択（日/英）</label>
-	    <select name="Lang" id="Lang">
-		<option value="Jp"> 日本語 </option>
-		<option value="En">英語</option>
-	    </select>
-	</div> 
-	
-	<div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-	    <label for="NoOfTarget" class="form-label fw-bold fs-5">対象者（取得番号）数</label>
-	    <input type="number" name="NoOfTarget" id="NoOfTarget" value="" required>
-	</div> 
-
-    <!-- <p class="lead mb-2">Could you please tell me your name?</p> -->
-    <!--     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-	    <input type="text" class="form-control" id="name" name="name" style="max-width: 256px;">
-	  </div>            -->
-	<div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
-	  <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">次へ</button>
-	</div>            
-    </div>
-</form>
+	  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+		<li><a href="request" class="nav-link px-2">マイナンバー収集依頼</a></li>
+		<li><a href="dashboard" class="nav-link px-2">マイナンバー収集状況進捗確認</a></li>
+	  </ul>
 {% endblock %}
