@@ -78,7 +78,7 @@ def signinForm():
     return render_template('signin.html')
 
 @app.route('/request', methods=['GET'])
-def dashboard():
+def request():
     print('Request for request page received')
     return render_template('request.html')
 
